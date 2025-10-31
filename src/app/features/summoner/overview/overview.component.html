@@ -1,0 +1,133 @@
+<ng-container *ngIf="summary$ | async as vm">
+    <section class="grid">
+        <aside class="left-col">
+            <ng-container *ngIf="vm.primaryRank as r">
+                <div class="card section">
+                    <div class="section-head">
+                        <h2>Ranked Solo</h2>
+                    </div>
+                    <div class="rank-block">
+                        <div class="emblem" aria-hidden="true">
+                            <img src="https://static.bigbrain.gg/assets/lol/ranks/s13/{{ r.tier | lowercase }}.png" alt="">
+                        </div>
+                        <div class="rank-meta">
+                            <div class="rank-title">{{ r.tier }} {{ r.rank }}</div>
+                            <div class="rank-sub">LP: {{ r.leaguePoints }} • W: {{ r.wins }} • L: {{ r.losses }}</div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="vm.secondaryRank as r">
+                <div class="card section">
+                <div class="section-head">
+                    <h2>Ranked Flex</h2>
+                </div>
+                <div class="rank-block">
+                    <div class="emblem" aria-hidden="true">
+                        <img src="https://static.bigbrain.gg/assets/lol/ranks/s13/{{ r.tier | lowercase }}.png" alt="">
+                    </div>
+                    <div class="rank-meta">
+                        <div class="rank-title">{{ r.tier }} {{ r.rank }}</div>
+                        <div class="rank-sub">LP: {{ r.leaguePoints }} • W: {{ r.wins }} • L: {{ r.losses }}</div>
+                    </div>
+                </div>
+                </div>
+            </ng-container>
+
+            <div class="card section">
+                <div class="section-head">
+                    <h2>Previous Ranks</h2>
+                </div>
+                <ul class="timeline">
+                    <li><span class="dot"></span><span class="line"></span><div>Season 14: —</div></li>
+                    <li><span class="dot"></span><span class="line"></span><div>Season 13: —</div></li>
+                    <li><span class="dot"></span><span class="line"></span><div>Season 12: —</div></li>
+                </ul>
+            </div>
+
+            <div class="card section">
+                <div class="section-head">
+                    <h2>Live Game</h2>
+                </div>
+                <div class="empty">Not in game (or unavailable).</div>
+                <button class="btn btn-outline small" disabled>View Live</button>
+            </div>
+        </aside>
+
+        <div class="right-col">
+            <div class="card section">
+                <div class="section-head">
+                    <h2>Champion Pool</h2>
+                </div>
+                <div class="champ-grid" *ngIf="vm.masteryTop?.length">
+                    <div class="champ" *ngFor="let c of vm.masteryTop.slice(0, 3)">
+                        <div class="champ-img">
+                            <img [src]="c.icon" alt="" />
+                        </div>
+                        <div class="champ-meta">
+                            <div class="champ-name">{{ c.championName }}</div>
+                            <div class="champ-sub">
+                                Level: {{ c.championLevel }} • Points: {{ c.championPoints | number }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card section">
+                <div class="section-head">
+                    <h2>Champion Mastery</h2>
+                </div>
+                <div class="mastery-list">
+                <div class="mastery-item">
+                <div class="mastery-icon"></div>
+                <div class="mastery-meta">
+                <div class="mastery-name">—</div>
+                <div class="mastery-sub">Points: — • Level: —</div>
+                </div>
+                </div>
+                <div class="mastery-item">
+                <div class="mastery-icon"></div>
+                <div class="mastery-meta">
+                <div class="mastery-name">—</div>
+                <div class="mastery-sub">Points: — • Level: —</div>
+                </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="card section">
+                <div class="section-head">
+                    <h2>Recent Games</h2>
+                    <div class="filters">
+                        <button class="btn btn-outline small" disabled>All</button>
+                        <button class="btn btn-outline small" disabled>Ranked</button>
+                        <button class="btn btn-outline small" disabled>Normals</button>
+                    </div>
+                </div>
+                <ul class="match-list">
+                    <li class="match-row">
+                        <div class="left">
+                        <div class="mini-icon"></div>
+                        <div class="kda">K/D/A: —/—/—</div>
+                        </div>
+                            <div class="right">
+                            <span class="result tag">Result: —</span>
+                            <span class="time tag">— ago</span>
+                        </div>
+                    </li>
+                    <li class="match-row">
+                        <div class="left">
+                        <div class="mini-icon"></div>
+                        <div class="kda">K/D/A: —/—/—</div>
+                        </div>
+                        <div class="right">
+                            <span class="result tag">Result: —</span>
+                            <span class="time tag">— ago</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</ng-container>

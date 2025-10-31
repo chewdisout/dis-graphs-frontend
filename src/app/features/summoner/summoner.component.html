@@ -1,0 +1,68 @@
+<ng-container *ngIf="summary$ | async as vm">
+  <!-- Skeleton / Loading -->
+  <div *ngIf="vm.loading" class="skeleton">
+    <div class="shell header"></div>
+    <div class="grid">
+      <div class="shell card tall"></div>
+      <div class="shell card"></div>
+      <div class="shell card"></div>
+      <div class="shell card wide"></div>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="vm.error && !vm.loading" class="error card">
+    {{ vm.error }}
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="vm.profile && !vm.loading" class="page">
+    <!-- Top header -->
+    <header class="page-header card">
+      <div class="profile">
+        <div class="avatar">
+            <img
+                [src]="'//lolg-cdn.porofessor.gg/img/d/summonerIcons/15.21/64/' + vm.profile.profile_icon + '.png'"
+                [alt]="'Missing profile icon'"
+                loading="lazy" />
+            <span class="level">{{ vm.profile.summoner_level }}</span>
+        </div>
+        <div class="id">
+          <h1 class="name">{{ vm.profile.summoner_name }}</h1>
+          <div class="meta-row">
+            <span class="tag">Region: {{ vm.profile.region }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a
+          class="btn btn-outline small"
+          [routerLink]="['/summoner', vm.profile.region, vm.profile.summoner_name, vm.profile.summoner_tag]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Overview
+        </a>
+        <a
+          class="btn btn-outline small"
+          [routerLink]="['/summoner', vm.profile.region, vm.profile.summoner_name, vm.profile.summoner_tag, 'champions']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Champions
+        </a>
+        <a
+          class="btn btn-outline small"
+          [routerLink]="['/summoner', vm.profile.region, vm.profile.summoner_name, vm.profile.summoner_tag, 'live']"
+          routerLinkActive="disabled"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Live Game
+        </a>
+        <button class="btn btn-outline small" disabled>Refresh</button>
+      </div>
+    </header>
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>

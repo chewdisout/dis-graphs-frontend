@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="logo">dis.gg</div>
+
+    <ul class="nav-links">
+      <li class="nav-item">
+        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-store/global/default/storefront/addon/public/img/ric-lol-icon.svg" alt="League" />
+        <span>League</span>
+      </li>
+      <li class="nav-item disabled">
+        <img src="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-tft/global/default/images/tft-icon.svg" alt="TFT" />
+        <span>TFT</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav-right">
+    <select class="input small" [value]="currentLang" (change)="switchLang($any($event.target).value)">
+      <option value="en">EN</option>
+      <option value="et">ET</option>
+    </select>
+    <button class="btn btn-outline small" (click)="toggleTheme()">🌓</button>
+    <button class="btn btn-primary small">Sign in</button>
+  </div>
+</nav>
+<div class="player-search">
+  <div class="row">
+    <input class="input" [(ngModel)]="name" placeholder="Enter summoner name (e.g. Maynter)" />
+    <input class="input" [(ngModel)]="tag" placeholder="Enter summoner tag (e.g. EUW1)" />
+    <select class="input" [(ngModel)]="region">
+      <option value="EUW">EUW</option>
+      <option value="RU">RU</option>
+    </select>
+    <button class="btn btn-primary" (click)="search()">Search</button>
+  </div>
+</div>

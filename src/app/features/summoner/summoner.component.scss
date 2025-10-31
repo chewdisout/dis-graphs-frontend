@@ -1,0 +1,87 @@
+.actions .active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.section-foot { margin-top: var(--space-3); }
+
+/* Container */
+.page {
+  display: grid;
+  gap: var(--space-6);
+  margin: 10px 10px 10px 10px;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--space-6);
+  justify-content: space-between;
+  padding: var(--space-6);
+}
+
+.profile {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+  width: 84px; height: 84px;
+  border-radius: 12px;
+  overflow: visible; 
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+
+  img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; }
+  .level {
+    position: absolute;
+    top: -8px;                      /* overlap the top edge */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.2;
+
+    background: #120c1f;            /* dark pill */
+    color: #fff;
+    border: 2px solid #7a5cff;      /* purple outline like your reference */
+    box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    z-index: 2;
+  }
+}
+
+.id .name {
+  margin: 0 0 6px 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .3px;
+  font-size: clamp(1.25rem, 1.1rem + 1vw, 1.75rem);
+}
+
+.meta-row { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.tag { display:inline-block; padding:2px 10px; border-radius: var(--radius-pill);
+  font-size: 12px; background: var(--color-surface); border: 1px solid var(--color-border);
+}
+.tag.tier { background: rgba(108,99,255,.12); border-color: rgba(108,99,255,.35); }
+
+.actions { display: flex; gap: var(--space-3); }
+
+/* Skeleton loader */
+.skeleton .shell {
+  border-radius: var(--radius-md);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--color-elev), #000 6%) 25%, color-mix(in srgb, var(--color-elev), #fff 8%) 37%, color-mix(in srgb, var(--color-elev), #000 6%) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.2s infinite linear;
+  border: 1px solid var(--color-border);
+}
+.skeleton .header { height: 110px; margin-bottom: var(--space-6); }
+.skeleton .card { height: 180px; }
+.skeleton .card.tall { height: 260px; }
+.skeleton .card.wide { height: 300px; }
+@keyframes shimmer { 0% { background-position: 0% 0; } 100% { background-position: -135% 0; } }
+
+/* Error */
+.error { padding: var(--space-5); color: #fff; background: #ef4444; border-color: #ef4444; }

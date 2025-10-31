@@ -1,0 +1,17 @@
+{
+  "APP": {
+    "TITLE": "DisGraphs",
+    "SEARCH_PLACEHOLDER": "Sisesta mängija nimi",
+    "SEARCH_BUTTON": "Otsi",
+    "REGION": "Piirkond",
+    "LEVEL": "Tase",
+    "SIGN_IN": "Logi sisse",
+    "LANGUAGE": "ET",
+    "TOGGLE_THEME": "Vaheta teemat"
+  },
+  "GAMES": {
+    "LEAGUE": "League",
+    "VALORANT": "Valorant",
+    "TFT": "TFT"
+  }
+}

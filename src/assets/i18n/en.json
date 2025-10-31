@@ -1,0 +1,17 @@
+{
+  "APP": {
+    "TITLE": "DisGraphs",
+    "SEARCH_PLACEHOLDER": "Enter summoner name",
+    "SEARCH_BUTTON": "Search",
+    "REGION": "Region",
+    "LEVEL": "Level",
+    "SIGN_IN": "Sign In",
+    "LANGUAGE": "EN",
+    "TOGGLE_THEME": "Toggle Theme"
+  },
+  "GAMES": {
+    "LEAGUE": "League",
+    "VALORANT": "Valorant",
+    "TFT": "TFT"
+  }
+}

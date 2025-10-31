@@ -1,0 +1,47 @@
+<div class="card section champions">
+  <div class="section-head sticky">
+    <h2>All Champion Masteries</h2>
+    <div class="controls">
+      <div class="control">
+        <i class="icon i-search" aria-hidden="true"></i>
+        <input class="input search" type="text" placeholder="Search champion…" (input)="onQuery($event)" />
+      </div>
+      <select class="input select" (change)="onSort($event)">
+        <option value="points">Sort by Points</option>
+        <option value="level">Sort by Level</option>
+        <option value="last">Sort by Last played</option>
+      </select>
+    </div>
+  </div>
+
+  <ng-container *ngIf="vm$ | async as vm">
+    <div *ngIf="vm.loading" class="list">
+      <div class="row skeleton" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]"></div>
+    </div>
+
+    <div *ngIf="vm.error && !vm.loading" class="error card">{{ vm.error }}</div>
+
+    <div *ngIf="!vm.loading" class="list">
+      <div class="row" *ngFor="let c of filtered(vm.rows)">
+        <div class="left">
+          <div class="portrait">
+            <img [src]="c.icon" [alt]="c.championName || 'champion'" loading="lazy"/>
+            <span class="level">{{ c.championLevel }}</span>
+          </div>
+          <div class="meta">
+            <div class="name">{{ c.championName }}</div>
+            <div class="sub">
+              <span>Points: {{ c.championPoints | number }}</span>
+              <span *ngIf="c.lastPlayTime">• Last: {{ c.lastPlayTime | date:'MMM d, y' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <span class="pill">Lv {{ c.championLevel }}</span>
+          <span class="pill soft">{{ c.championPoints | number }} pts</span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
