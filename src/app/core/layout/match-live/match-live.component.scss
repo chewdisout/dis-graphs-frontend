@@ -1,0 +1,109 @@
+/* match-live.component.scss */
+.live {
+  padding: var(--space-5);
+  background: var(--color-elev);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.hdr {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  font-weight: 800;
+  font-family: var(--font-display);
+  letter-spacing: .2px;
+
+  .side {
+    font-size: 1.05rem;
+    &.blue { color: #60a5fa; }
+    &.red  { color: #f87171; text-align: right; }
+  }
+  .clock {
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+    min-width: 90px; text-align: center;
+  }
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.col .row {
+  display: grid;
+  grid-template-columns: auto 56px 1fr auto; /* lane | champ | meta | spells */
+  gap: var(--space-3);
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-elev), #fff 2%);
+  &:not(:last-child){ margin-bottom: 8px; }
+}
+
+.col.right .row {
+  grid-template-columns: auto 1fr 56px auto; /* spells | meta | champ | lane */
+}
+
+.lane.tag {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  min-width: 56px;
+  text-align: center;
+}
+
+.champ {
+  width: 56px; height: 56px; border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: #0b1020;
+  object-fit: cover;
+}
+
+.meta .name { 
+  font-weight: 700; 
+  
+  a {
+    text-decoration: none;
+    color: var(--color-muted);
+  }
+}
+.meta .sub { color: var(--color-muted); font-size: .9rem; }
+.meta.tr { text-align: right; }
+
+.spells { display: flex; gap: 6px; }
+.spells img {
+  width: 26px; height: 26px; border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.bans {
+  display: grid; gap: 8px;
+  .brow { display: flex; align-items: center; gap: 10px; }
+  .lbl {
+    font-size: 11px; font-weight: 800;
+    padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--color-border);
+    &.blue { color: #60a5fa; }
+    &.red  { color: #f87171; }
+  }
+  .icons { display: flex; gap: 6px; }
+  .ban {
+    width: 32px; height: 32px; border-radius: 8px;
+    border: 1px solid var(--color-border);
+    filter: grayscale(.65) contrast(1.1);
+  }
+}
+
+.not { text-align: center; padding: 28px; }

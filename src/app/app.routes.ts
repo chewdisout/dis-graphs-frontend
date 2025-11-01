@@ -3,6 +3,7 @@ import { SummonerPage } from './features/summoner/summoner.component';
 import { ChampionsComponent } from './features/summoner/champions/champions.component';
 import { OverviewComponent } from './features/summoner/overview/overview.component';
 import { SummonerStore } from './features/summoner/summoner.store';
+import { MatchLiveComponent } from './core/layout/match-live/match-live.component';
 
 export const routes: Routes = [
     { path: '', loadComponent: () => import('./features/home/home.component').then(m => m.HomePage) },
@@ -13,6 +14,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: OverviewComponent }, // if you keep overview inline
             { path: 'champions', component: ChampionsComponent },
+            { path: 'live', component: MatchLiveComponent }
         ],
     },
     { path: '**', redirectTo: '' },

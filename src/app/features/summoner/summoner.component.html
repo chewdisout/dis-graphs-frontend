@@ -55,12 +55,12 @@
         <a
           class="btn btn-outline small"
           [routerLink]="['/summoner', vm.profile.region, vm.profile.summoner_name, vm.profile.summoner_tag, 'live']"
-          routerLinkActive="disabled"
+          routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           Live Game
         </a>
-        <button class="btn btn-outline small" disabled>Refresh</button>
+        <button class="btn btn-outline small" (click)="refresh()">Refresh</button>
       </div>
     </header>
     <router-outlet></router-outlet>

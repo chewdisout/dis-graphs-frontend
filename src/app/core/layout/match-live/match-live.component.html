@@ -1,0 +1,56 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <div class="live card" *ngIf="vm.inGame; else notPlaying">
+    <header class="hdr">
+      <div class="side blue">BLUE TEAM</div>
+      <div class="clock">{{ (vm.elapsedSeconds || 0) * 1000 | date:'mm:ss':'UTC' }}</div>
+      <div class="side red">RED TEAM</div>
+    </header>
+    <section class="teams">
+      <div class="col left">
+        <div class="row" *ngFor="let p of vm.blue">
+          <div class="lane tag">{{ p.__role || '—' }}</div>
+          <img class="champ" [src]="p.championIcon" [alt]="p.championName || 'champion'" />
+          <div class="meta">
+            <div class="name"><a href="/summoner/{{vm.platform}}/{{p.summonerName.split('#')[0]}}/{{p.summonerName.split('#')[1]}}">{{ p.summonerName }}</a></div>
+            <div class="sub">Lv {{ p.summonerLevel }}</div>
+          </div>
+          <div class="spells">
+            <img [src]="p.spell1Icon" alt="" />
+            <img [src]="p.spell2Icon" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col right">
+        <div class="row" *ngFor="let p of vm.red">
+          <div class="spells">
+            <img [src]="p.spell1Icon" alt="" />
+            <img [src]="p.spell2Icon" alt="" />
+          </div>
+          <div class="meta tr">
+            <div class="name"><a href="/summoner/{{vm.platform}}/{{p.summonerName.split('#')[0]}}/{{p.summonerName.split('#')[1]}}">{{ p.summonerName }}</a></div>
+            <div class="sub">Lv {{ p.summonerLevel }}</div>
+          </div>
+        <img class="champ" [src]="p.championIcon" [alt]="p.championName || 'champion'" />
+          <div class="lane tag">{{ p.__role || '—' }}</div>
+        </div>
+      </div>
+    </section>
+    <section class="bans" *ngIf="vm.bans">
+      <div class="brow">
+        <span class="lbl blue">BANS</span>
+        <div class="icons">
+          <img *ngFor="let b of vm.bans.blue" class="ban" [src]="b.icon" alt="" />
+        </div>
+      </div>
+      <div class="brow">
+        <span class="lbl red">BANS</span>
+        <div class="icons">
+          <img *ngFor="let b of vm.bans.red" class="ban" [src]="b.icon" alt="" />
+        </div>
+      </div>
+    </section>
+  </div>
+  <ng-template #notPlaying>
+    <div class="not card">Not currently in game.</div>
+  </ng-template>
+</ng-container>

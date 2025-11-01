@@ -1,11 +1,19 @@
 .player-search {
   padding: var(--space-6);
-  margin-bottom: var(--space-5);
-  border-bottom: 1px solid var(--color-border);
+
   .row {
     display: flex;
     flex-direction: row;
     gap: var(--space-3);
+
+    input {
+      width: 250px;
+    }
+
+    select {
+      width: 80px;
+    }
+
     @media (max-width: 480px) { 
         flex-direction: column;
     }

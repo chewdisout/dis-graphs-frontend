@@ -19,8 +19,7 @@ export class NavbarComponent {
   currentLang = 'en';
 
   summoner?: Summoner;
-  name: string = '';
-  tag: string = '';
+  nameAndTag: string = '';
   region: string = '';
   loading = false;
 
@@ -45,13 +44,13 @@ export class NavbarComponent {
 
   search() {
     this.loading = true;
-    if (!this.name || !this.tag || !this.region) {
+    if (!this.nameAndTag || !this.region) {
       alert('Please fill in all fields');
       this.loading = false;
       return;
     }
 
-    this.summonerService.getSummoner(this.name, this.tag, this.region).subscribe({
+    this.summonerService.getSummoner(this.nameAndTag.split('#')[0], this.nameAndTag.split('#')[1], this.region).subscribe({
       next: data => {
         if (!data || data.error) {
           alert('Player not found');
@@ -59,7 +58,7 @@ export class NavbarComponent {
         }
 
         this.summoner = data;
-        this.route.navigate([`/summoner/${this.region}/${this.summoner.summoner_name}/${this.tag}`]);
+        this.route.navigate([`/summoner/${this.region}/${this.summoner.summoner_name}/${this.nameAndTag.split('#')[1]}`]);
       },
       error: () => {
         this.summoner = undefined;
