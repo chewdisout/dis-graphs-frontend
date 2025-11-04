@@ -2,10 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { Summoner } from '../../../models/summoner-info/summoner.model';
 import { SummonerService } from '../../../services/summoner/summoner.service';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +19,13 @@ import { SummonerService } from '../../../services/summoner/summoner.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  searchCtrl = new FormControl('');
+  loadingSearch = false;
+  
+
+
+
+
   isDark = true;
   currentLang = 'en';
 

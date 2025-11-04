@@ -13,10 +13,8 @@ export class SummonerStore {
   private params$ = new BehaviorSubject<Params>({ region: '', gameName: '', tagLine: '' });
   private force$  = new BehaviorSubject<boolean>(false);
 
-  /** Expose current params for children that need them (e.g. champions) */
   readonly routeParams$ = this.params$.asObservable();
 
-  /** Summary VM (loading/error included) */
   readonly summary$ = combineLatest([this.params$, this.force$]).pipe(
     switchMap(([p, force]) =>
       this.api.getSummonerSummary(p.region, p.gameName, p.tagLine, force).pipe(
@@ -31,15 +29,12 @@ export class SummonerStore {
     )
   );
 
-  /** Called by parent when the route changes */
   setParams(p: Params) {
     this.params$.next(p);
   }
 
-  /** Manual refresh */
   refresh() {
     this.force$.next(true);
-    // reset so subsequent refreshes trigger again with same params
     queueMicrotask(() => this.force$.next(false));
   }
 }

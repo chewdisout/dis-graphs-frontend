@@ -65,6 +65,7 @@
   cursor: pointer;
   opacity: 0.8;
   transition: opacity var(--transition-fast);
+  text-decoration: none;
 
   &:hover {
     opacity: 1;

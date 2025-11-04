@@ -16,11 +16,9 @@ export class ChampionsComponent {
   private store = inject(SummonerStore);
   private api = inject(SummonerService);
 
-  // UI state used by template
   query = signal<string>('');
   sortBy = signal<'points' | 'level' | 'last'>('points');
 
-  // Viewmodel: fetch all masteries using route params from the store
   vm$ = this.store.routeParams$.pipe(
     switchMap(({ region, gameName, tagLine }) =>
       this.api.getSummonerMastery(region, gameName, tagLine, false).pipe(
@@ -31,7 +29,6 @@ export class ChampionsComponent {
     )
   );
 
-  // Template event handlers (avoid TS casts in template)
   onQuery(e: Event) {
     this.query.set((e.target as HTMLInputElement).value ?? '');
   }
@@ -39,7 +36,6 @@ export class ChampionsComponent {
     this.sortBy.set(((e.target as HTMLSelectElement).value as any) ?? 'points');
   }
 
-  // Client-side filter/sort
   filtered(rows: SummonerTopMastery[]) {
     const q = this.query().toLowerCase();
     let arr = rows.filter(r => !q || (r.championName || '').toLowerCase().includes(q));

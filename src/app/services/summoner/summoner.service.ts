@@ -10,8 +10,9 @@ import { SummonerMastery } from '../../models/summoner-info/summoner-mastery';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SummonerService {
-  private apiUrl = 'http://localhost:8000'; // FastAPI backend
+  private apiUrl = 'http://localhost:8000';
 
   constructor(private http: HttpClient) {}
 

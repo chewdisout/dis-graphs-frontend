@@ -9,7 +9,7 @@ import { MatchLive } from '../../models/match/match-live.model';
 })
 
 export class MatchService {
-  private apiUrl = 'http://localhost:8000'; // FastAPI backend
+  private apiUrl = 'http://localhost:8000';
 
   constructor(private http: HttpClient) {}
 
